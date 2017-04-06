@@ -1,31 +1,23 @@
-<!doctype html>
+<?php
+require 'vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$log = new Logger('Laboration 1');
+$log->pushHandler(new StreamHandler('greetings.log', Logger::INFO));
+
+$name = $_GET['name'];
+$log->info($name);
+?>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Example form</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Example form</h1>
-            <p>Please share some info about yourself =)</p>
-            <form action="response.php" method="get">
-                <div class="form-group">
-                    <label for="name">Name: </label>
-                    <input type="text" id="name" name="name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="age">Age: </label>
-                    <input type="number" id="age" name="age" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Send info!" class="btn btn-success">
-                </div>
-            </form>
-        </div>
-    </body>
+<head>
+<title>Testing, testing</title>
+</head>
+<body>
+<?php
+echo "Hello, " . $name;
+?>
+</body>
 </html>
