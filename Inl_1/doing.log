@@ -1,0 +1,5 @@
+[2017-04-08 17:12:00] myLogger.INFO: print all unicorns [] []
+[2017-04-08 17:15:03] myLogger.INFO: Gets info on unicorn2 [] []
+[2017-04-08 17:16:17] myLogger.INFO: Gets info on unicorn: 2: Karibisk strandponny [] []
+[2017-04-08 17:16:41] myLogger.INFO: print all unicorns [] []
+[2017-04-08 17:16:48] myLogger.INFO: Gets info on unicorn: :  [] []
