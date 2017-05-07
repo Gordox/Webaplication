@@ -10,7 +10,19 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
-$app->get('/', function () use ($app) {
-    return $app->version();
+use Illuminate\Http\Request;
+$app->get('/hej', function () {
+    return 'Soon, we will list the products here!';
 });
+
+$app->get('/products', 'ProductController@index');
+
+$app->get('/products/{id}', 'ProductController@showProduct');
+
+$app->get('/stores', 'ProductController@stores');
+
+$app->get('/reviews', 'ProductController@reviews');
+
+$app->post('/products', 'ProductController@create');
+
+?>
