@@ -11,9 +11,6 @@
 |
 */
 use Illuminate\Http\Request;
-$app->get('/hej', function () {
-    return 'Soon, we will list the products here!';
-});
 
 $app->get('/products', 'ProductController@index');
 

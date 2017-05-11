@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Stores;
+use App\Store;
 use App\Review;
 use App\Product;
 
@@ -14,15 +14,18 @@ class ProductController extends Controller
 
   public function index(){
     $products = Product::all();
-    return "Hej";//response()->json($products);
+    return response()->json($products);
   }
+
+
+
 
   public function showProduct($id){
     $product = Product::find($id);
     $product->stores = $product->stores;
-    $product->review = $product->review;
+    $product->reviews = $product->reviews;
 
-    return response()->json($products);
+    return response()->json($product);
   }
 
   public function stores(){
@@ -32,7 +35,7 @@ class ProductController extends Controller
 
   public function reviews(){
     $reviews = Review::all();
-    return response()->json($stores);
+    return response()->json($reviews);
   }
 
 
@@ -44,10 +47,12 @@ class ProductController extends Controller
     $newProduct->image = $request->image;
     $newProduct->description = $request->description;
 
+    $newProduct->save();
+
     foreach ($request->get("stores") as $store) {
       $newProduct->stores()->attach($store);
     }
-    $newProduct->save();
+
 
     $complete = array();
     $complete['success'] = true;
