@@ -11,12 +11,29 @@
 |
 */
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('/products', 'ProductController');
+Route::get('/products', 'ProductController@index');
+Route::get('/products/show/{id}', 'ProductController@show');
 
-//Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function(){
+
+  //Product controler function
+  Route::get('/products/create', 'ProductController@create');
+
+
+
+
+
+
+
+
+
+
+});

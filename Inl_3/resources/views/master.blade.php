@@ -30,41 +30,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">SOMETHING HERE LATER</a>
+      <a class="navbar-brand" href="/">Welcome</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/products">Products</a></li>
-        <li><a href="/products/create">Add product</a></li>
-        <!--@if (Route::has('login'))
+        <li><a href="{{ url('/products') }}">Products</a></li>
+        <li><a href="{{ url('/products/create') }}">Add product</a></li>
+        @if (Route::has('login'))
                 @if (Auth::check())
-                  <li> <a href="{{ url('/home') }}">My account</a> </li>
-                  <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
                 @else
                     <li> <a href="{{ url('/login') }}">Login</a>  </li>
                     <li> <a href="{{ url('/register') }}">Register</a> </li>
                 @endif
-        @endif-->
+        @endif
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
