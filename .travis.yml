@@ -1,0 +1,27 @@
+os:
+- linux
+addons:
+  ssh_known_hosts:
+  - antonmarcus.westeurope.cloudapp.azure.com
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+language: php
+php:
+- 7.0
+install:
+- composer install
+script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
+deploy:
+- provider: script
+  skip-cleanup: true
+  script:
+  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER@$DEPLOY_HOST:~/marcusanton
+  on:
+    branch: master
+notifications:
+  email:
+    recipients: svenne94@hotmail.com
+before_install:
+- openssl aes-256-cbc -K $encrypted_def0b8dab0b4_key -iv $encrypted_def0b8dab0b4_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
