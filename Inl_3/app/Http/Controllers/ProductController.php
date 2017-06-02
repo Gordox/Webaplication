@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('showAll');
+      $products = Product::all();
+      return view('showAll',["products" => $products]);
     }
 
     /**
@@ -45,7 +46,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('show',["id"=>$id]);
+      $product = Product::with('reviews', 'stores')->find($id);
+
+      return view('show',["product" => $product]);
     }
 
     /**
@@ -79,6 +82,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8">
-      <title>Produkter</title>
+      <title>Snorlax shop</title>
 
       <!-- jquery -->
        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
