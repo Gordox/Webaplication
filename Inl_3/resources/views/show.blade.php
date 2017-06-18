@@ -84,7 +84,7 @@ div.display img {
     <p style="padding: 10px; border-bottom: 1px solid #ccc; width: 100%;" ></p>
   @endforeach
 </div>
-<!--- buttons--->
+<!--- buttons --->
 <div style="display: inline;">
   @if (!Auth::guest())
   <h3>Handel product</h3>
@@ -92,9 +92,8 @@ div.display img {
     {{ csrf_field() }}
     <input type="hidden" name="_method" value="DELETE">
     <button type="submit"> Delete </button>
-    <button onclick="location.href='{{ action('ProductController@edit', $product->id) }}'" type="button" >Edit</button>
   </form>
-
+  <button onclick="location.href='{{ action('ProductController@edit', $product->id) }}'" type="button" >Edit</button>
   @endif
 </div>
 

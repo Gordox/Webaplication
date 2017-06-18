@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Product;
+use App\Store;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -59,7 +60,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+      $stores = Store::all();
+      $product = Product::find($id);
+      return view("edit", [ "product" => $product,"stores" => $stores,]);
     }
 
     /**
@@ -71,7 +74,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $product = Product::find($id);
+      $product->title = $request->get("title");
+      $product->brand = $request->get("brand");
+      $product->price = $request->get("price");
+      $product->description = $request->get("description");
+      $product->image = $request->get("image");
+
+      $product->save();
+
+      $product->stores()->detach();
+
+      $stores = $request->input('stores');
+      if ($stores != null)
+      {
+        foreach($stores as $store)
+        {
+          $product->stores()->attach($store);
+        }
+      }
+
+      return redirect()->action('ProductController@show', $product->id);
     }
 
     /**
