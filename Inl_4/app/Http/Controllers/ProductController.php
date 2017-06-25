@@ -42,9 +42,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-      $stores = Store::all();
-      $product = Product::find($id);
-      return view("edit", [ "product" => $product,"stores" => $stores,]);
+
     }
 
     public function update(Request $request, $id)
@@ -68,7 +66,7 @@ class ProductController extends Controller
         }
       }
 
-      return redirect()->action('ProductController@index');
+      return redirect()->action('ProductController@show');
     }
 
     public function destroy($id)
