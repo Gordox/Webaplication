@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/products', 'ProductController@index');
+Route::get('/products/show/{id}', 'ProductController@show');
+
 Route::group(['middleware' => 'auth'], function(){
 
       //Prooduct controller
