@@ -54,7 +54,9 @@ class ProductController extends Controller
       $product->brand = $request->brand;
       $product->price = $request->price;
       $product->image = $request->image;
-      $product->descripion = $request->description;
+      $product->description = $request->description;
+
+      $product->save();
 
       $product->stores()->detach();
 
@@ -64,11 +66,11 @@ class ProductController extends Controller
       {
         foreach($stores as $store)
         {
-          $products->stores()->attach($store);
+          $product->stores()->attach($store);
         }
       }
 
-      return redirect()->action('ProductController@show');
+      return redirect()->action('ProductController@index');
     }
 
     public function destroy($id)
