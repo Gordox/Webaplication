@@ -19,7 +19,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+      $newProduct = new Product;
+      $newProduct->title = $request->title;
+      $newProduct->brand = $request->brand;
+      $newProduct->price = $request->price;
+      $newProduct->image = $request->image;
+      $newProduct->description = $request->description;
+      $newProduct->save();
 
+      foreach($request->get("stores") as $store){
+          $newProduct->stores()->attach($store);
+      }
     }
 
     public function show($id)
@@ -36,11 +46,33 @@ class ProductController extends Controller
 
     public function update(Requet $request, $id)
     {
+      $product = Product::find($request->id);
+      $product->title = $request->title;
+      $product->brand = $request->brand;
+      $product->price = $request->price;
+      $product->image = $request->image;
+      $product->descripion = $request->description;
 
+      $product->stores()->detach();
+
+      $stores = $request->input('stores');
+
+      if($stores != null)
+      {
+        foreach($stores as $store)
+        {
+          $products->stores()->attach($store);
+        }
+      }
+
+      return redirect()->action('ProductController@show');
     }
 
     public function destroy($id)
     {
-      
+      $product = Product::find($id);
+      $product->delete();
+
+      return redirect()->action('ProductController@index');
     }
 }
