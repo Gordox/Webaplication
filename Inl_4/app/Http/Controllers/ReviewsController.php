@@ -24,7 +24,7 @@ class ReviewsController extends Controller
 
     public function show($id)
     {
-
+      
     }
 
     public function edit($id)
@@ -39,7 +39,9 @@ class ReviewsController extends Controller
 
     public function destroy($id)
     {
+      $review = Review::find($id);
+      $review->delete();
 
-
+      return redirect()->action('ProductController@index');
     }
 }

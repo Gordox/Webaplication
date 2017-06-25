@@ -75,7 +75,7 @@ div.display img {
   @foreach ($product->reviews as $review)
     <p style="padding: 10px;">Name: {{$review->name}} <br>Comment: {{$review->comment}}<br> Score: {{$review->grade}} </p>
     @if (!Auth::guest())
-    <form action="{{action('ProductController@destroy', $product->id)}}" method="POST">
+    <form action="{{action('ReviewsController@destroy', $review->id)}}" method="POST">
              {{ csrf_field() }}
              <input type="hidden" name="_method" value="DELETE">
              <button type="submit"> Delete </button>

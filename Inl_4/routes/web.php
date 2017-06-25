@@ -36,6 +36,6 @@ Route::group(['middleware' => 'auth'], function(){
 
       //Store controller
 
-      //Review controller
+      Route::delete('/products/review/{id}', 'ReviewsController@destroy');
 
 });
