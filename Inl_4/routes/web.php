@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function(){
       //Store controller
 
       //Review controller
+      Route::get('/products/review/create/{id}', 'ReviewsController@create');
+      Route::post('/products/review/create', 'ReviewsController@store');
       Route::delete('/products/review/{id}', 'ReviewsController@destroy');
 
 });

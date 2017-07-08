@@ -12,14 +12,22 @@ class ReviewsController extends Controller
 
     }
 
-    public function create()
+    public function create($id)
     {
-
+      return view('createReview', ['product_id' => $id]);
     }
 
     public function store(Request $request)
     {
+      $newReview = new Review;
+      $newReview->name = $request->name;
+      $newReview->comment = $request->comment;
+      $newReview->grade = $request->grade;
+      $newReview->product_id = $request->id;
 
+      $newReview->save();
+
+      return redirect()->action('ProductController@index');
     }
 
     public function show($id)

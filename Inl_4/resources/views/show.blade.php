@@ -83,6 +83,8 @@ div.display img {
     @endif
     <p style="padding: 10px; border-bottom: 1px solid #ccc; width: 100%;" ></p>
   @endforeach
+
+  <button onclick="location.href='{{action('ReviewsController@create', $product->id)}}'" type="button" >Add Review</button>
 </div>
 <!--- buttons --->
 <div style="display: inline;">
