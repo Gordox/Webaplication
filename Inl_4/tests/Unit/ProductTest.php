@@ -14,12 +14,13 @@ class ProductTest extends TestCase
       'id' => 1,
       'title' => 'iPhone 5s',
       'brand' => 'Apple',
-      'image' => 'Random',
-      'description' => 'Random',
+      'image' => 'http://www.three.co.uk/static/images/device_pages/MobileVersion/Apple/iPhone_5s/Space_Grey/desktop/1.jpg',
+      'description' => 'Apples iPhone 5S är uppgraderingen av iPhone 5. 5S har samma mått och skärmtyp som föregångaren, men telefonen har nu en fingeravtrycksläsare samt ny kamera med tvåfärgsblixt',
       'price' => 2999
     ]);
   }
 
+/*
   public function testAddProduct()
   {
     $this->visit('/products/create')
@@ -32,4 +33,5 @@ class ProductTest extends TestCase
     ->press('Save Product')
     ->seePageIs('/products');
   }
+  */
 }
