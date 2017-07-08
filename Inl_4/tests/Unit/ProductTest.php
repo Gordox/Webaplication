@@ -19,4 +19,17 @@ class ProductTest extends TestCase
       'price' => 2999
     ]);
   }
+
+  public function testAddProduct()
+  {
+    $this->visit('/products/create')
+    ->type('Marcus', 'title')
+    ->type('Le Phone', 'brand')
+    ->type(1337, 'price')
+    ->type('http://imgur.com/gallery/B9GGS', 'image')
+    ->type('A phone of exceptional splendor', 'description')
+    ->check('Siba')
+    ->press('Save Product')
+    ->seePageIs('/products');
+  }
 }
