@@ -24,7 +24,7 @@ class ReviewsController extends Controller
 
     public function show($id)
     {
-      
+
     }
 
     public function edit($id)

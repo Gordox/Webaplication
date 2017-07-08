@@ -28,7 +28,7 @@ div.gallery img {
 <div>
   <div style="text-align:center;">
     <!--Title-->
-    <h1>Itmes</h1>
+    <h1>Items</h1>
     <p>Glorious thing these are!</p>
   </div>
 
