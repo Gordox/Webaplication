@@ -33,12 +33,12 @@
   </div>
 
   <div class="form-group">
-    <label for="store">All stores</label>
+    <label for="store">Stores</label>
     @foreach($stores as $store)
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="stores[]" value="{{ $store->id}}" >
-            {{ $store->name}}
+          <input type="checkbox" name="stores[]" value="{{$store->id}}" >
+            {{$store->name}}
           </input>
         </label>
       </div>

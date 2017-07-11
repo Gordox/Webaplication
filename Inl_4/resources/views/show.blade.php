@@ -50,7 +50,7 @@ div.display img {
     <div style="text-align:center;">
       <!--Title-->
       <h1>{{$product->title}}</h1>
-      <p style="font-size: 9;"> Made by: {{$product->brand }}</p>
+      <p style="font-size: 9;"> Comapny: {{$product->brand }}</p>
     </div>
     <!--Description, shop and price-->
     <div class="column">
@@ -62,7 +62,7 @@ div.display img {
         <li>{{$store->name}}</li>
       @endforeach
       </ul>
-      <h4 style="float: right;">Price: {{$product->price }} Snorlax Dollar</h4>
+      <h4 style="float: right;">Price: {{$product->price }} kr</h4>
 
     </div>
   </div>
@@ -75,7 +75,7 @@ div.display img {
   @foreach ($product->reviews as $review)
     <p style="padding: 10px;">Name: {{$review->name}} <br>Comment: {{$review->comment}}<br> Score: {{$review->grade}} </p>
     @if (!Auth::guest())
-    <form action="{{action('ProductController@destroy', $product->id)}}" method="POST">
+    <form action="{{action('ReviewsController@destroy', $review->id)}}" method="POST">
              {{ csrf_field() }}
              <input type="hidden" name="_method" value="DELETE">
              <button type="submit"> Delete </button>
@@ -83,6 +83,8 @@ div.display img {
     @endif
     <p style="padding: 10px; border-bottom: 1px solid #ccc; width: 100%;" ></p>
   @endforeach
+
+  <button onclick="location.href='{{action('ReviewsController@create', $product->id)}}'" type="button" >Add Review</button>
 </div>
 <!--- buttons --->
 <div style="display: inline;">

@@ -11,6 +11,34 @@
 |
 */
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/products', 'ProductController@index');
+Route::get('/products/show/{id}', 'ProductController@show');
+
+Route::group(['middleware' => 'auth'], function(){
+
+      //Prooduct controller
+      Route::get('/products/create', 'ProductController@create');
+      Route::get('/products/edit/{id}', 'ProductController@edit');
+
+      Route::post('/products', 'ProductController@store');
+
+      Route::put('/products/{id}', 'ProductController@update');
+
+      Route::delete('/products/{id}', 'ProductController@destroy');
+
+
+      //Store controller
+
+      //Review controller
+      Route::get('/products/review/create/{id}', 'ReviewsController@create');
+      Route::post('/products/review/create', 'ReviewsController@store');
+      Route::delete('/products/review/{id}', 'ReviewsController@destroy');
+
 });
