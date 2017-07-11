@@ -25,7 +25,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('create');
+      $stores = Store::all();
+
+      return view('create', ['stores' => $stores]);
     }
 
     /**
@@ -36,7 +38,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $newProduct = new Product;
+      $newProduct->title = $request->title;
+      $newProduct->brand = $request->brand;
+      $newProduct->price = $request->price;
+      $newProduct->image = $request->image;
+      $newProduct->description = $request->description;
+      $newProduct->save();
+
+      foreach($request->get("stores") as $store){
+          $newProduct->stores()->attach($store);
+      }
+
+      return redirect()->action('ProductController@index');
     }
 
     /**
